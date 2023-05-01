@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
-
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 const SignIn = () => {
     const [email,setEmail] = useState('')
     const [emailError,setEmailError] = useState('')
@@ -7,6 +8,7 @@ const SignIn = () => {
     const [password,setPassword] = useState('')
     const [confirmPassword,setConfirmPassword] = useState('')
     var data = JSON.parse(localStorage.getItem('data'))
+    const history = useNavigate()
     
     const signIn = (e) => {
         setEmailError('')
@@ -22,6 +24,8 @@ const SignIn = () => {
       if(password === confirmPassword && !emailFound){
         data.push(userDetails)
         localStorage.setItem('data',JSON.stringify(data))
+        toast('Sign In Successful!')
+        history('/login')
       }
     }
   return (
