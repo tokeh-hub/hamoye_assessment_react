@@ -71,9 +71,11 @@ const Dashboard = () => {
       });
     } catch (error) {}
   };
+  
 
   useEffect(() => {
     getFlights();
+    //  eslint-disable-next-line
   }, []);
 
 
