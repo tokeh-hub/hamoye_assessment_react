@@ -16,7 +16,7 @@ const SignIn = () => {
             "email": email,
              "password":password
         }
-      var emailFound = data.find(element=>element.email === email)
+      var emailFound = data?.find(element=>element.email === email)
       if(emailFound){setPasswordError('');setEmailError('User is registered. Please Login')}
       if(password !== confirmPassword){setEmailError('');setPasswordError('Your passwords are not the same')}
       if(password === confirmPassword && !emailFound){

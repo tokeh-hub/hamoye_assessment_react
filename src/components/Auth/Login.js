@@ -12,7 +12,7 @@ const Login = () => {
 
     const login = (e) => {
         e.preventDefault()
-        var userEmailFound = data.find(element=>element.email === email)
+        var userEmailFound = data?.find(element=>element.email === email)
         if(userEmailFound && userEmailFound.password !== password){
             setError('Password is incorrect')
         }
