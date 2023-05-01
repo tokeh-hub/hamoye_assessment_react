@@ -23,8 +23,6 @@ const SignIn = () => {
         data.push(userDetails)
         localStorage.setItem('data',JSON.stringify(data))
       }
-      
-      
     }
   return (
     <div className='flex justify-center items-center bg-gradient-to-b from-fuchsia-500 to-indigo-600 h-screen'>

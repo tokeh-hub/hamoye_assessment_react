@@ -29,13 +29,13 @@ const Login = () => {
     <div className='flex justify-center items-center bg-gradient-to-b from-fuchsia-500 to-indigo-600 h-screen'>
     <div className='w-screen mx-6 sm:mx-0 sm:w-[400px] h-80 rounded-md bg-white p-8 mt-12'>
         <h2 className='text-xl text-slate-500 font-bold pb-8'>Login</h2>
-        <p>{error}</p>
+        <p className='text-red-500'>{error}</p>
         <form onSubmit={login} className='flex flex-col gap-8'>
             <input type='email' className='w-full text-white py-1 px-2 rounded-md outline-none bg-slate-500' placeholder='Email' value={email} onChange={e=>setEmail(e.target.value)} required/>
             <input type='password' className='w-full text-white py-1 px-2 rounded-md outline-none bg-slate-500' placeholder='Password' value={password} onChange={e=>setPassword(e.target.value)} required/>
             <input type='submit' className='cursor-pointer hover:bg-fuchsia-600 w-full py-1 px-2 rounded-md text-white bg-fuchsia-500 font-medium text-lg' value='Log in'/>
         </form>
-        <p className='text-slate-500 text-start pt-3'>New Here? <NavLink to='/signin' className='text-fuchsia-500 hover:text-fuchsia-600 underline'>Sign In</NavLink></p>
+        <p className={`text-slate-500 text-start pt-3 ${error !== '' && 'pt-8'}`}>New Here? <NavLink to='/signin' className='text-fuchsia-500 hover:text-fuchsia-600 underline'>Sign In</NavLink></p>
     </div>
     
     </div>
