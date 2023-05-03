@@ -83,12 +83,12 @@ const Dashboard = () => {
 
   const convertFromValue = (e) => {
     setFrom(e.target.value)
-    console.log(e.target.value)
     var d = `${date}T${e.target.value}`;
     var someDate = new Date(d);
     someDate = someDate.getTime();
     setBegin(Math.floor(someDate / 1000));
   };
+
   const convertToValue = (e) => {
     var d = `${date}T${e.target.value}`;
     var someDate = new Date(d);
@@ -99,13 +99,10 @@ const Dashboard = () => {
   const changeTimeToCST = (date) =>{
     let cstTime = new Date(date).toLocaleString("es-MX", {
         timeZone: "America/Mexico_City" });
-    console.log(cstTime)
     var someDate = new Date(cstTime);
     var minutes = someDate.getMinutes();
     var hours = someDate.getHours();
-    // if(minutes < 10){minutes = minutes.toString().padStart(2, '0')}
     var a  =  hours >= 12 ? 'PM' : 'AM';
-    console.log(hours + ":" + minutes + ' ' + a)
     setTime(hours + ":" + minutes + ' ' + a)
   }
 

@@ -6,8 +6,6 @@ const Login = () => {
     const [password,setPassword] = useState('')
     const [error,setError] = useState('')
     const data = JSON.parse(localStorage.getItem('data'))
-    // const data = [{"email":"olalekemoshood@yahoo.com","password":"1234"}]
-    // console.log(data)
     const history = useNavigate()
 
     const login = (e) => {
