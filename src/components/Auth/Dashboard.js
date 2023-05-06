@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactLoading from "react-loading";
 import axios from "axios";
 import {AiOutlineArrowLeft,AiOutlineArrowRight} from 'react-icons/ai'
+import { NavLink } from "react-router-dom";
 
 const ITEMS_PER_PAGE = 10;
 const Dashboard = () => {
@@ -178,19 +179,11 @@ const Dashboard = () => {
     <div className="flex h-[900px] bg-gray-200">
       <div class="hidden w-64 bg-indigo-500 md:block">
     <div class="p-6">
-      <h2 class="text-white text-2xl font-bold">Dashboard</h2>
+      <h2 class="text-white text-3xl font-bold">FlightsNG</h2>
     </div>
     <nav class="flex-grow">
       <ul class="p-6">
-        <li class="mb-2">
-          <a href="#" class="block text-gray-300 hover:text-white">Home</a>
-        </li>
-        <li class="mb-2">
-          <a href="#" class="block text-gray-300 hover:text-white">Profile</a>
-        </li>
-        <li class="mb-2">
-          <a href="#" class="block text-gray-300 hover:text-white">Settings</a>
-        </li>
+         <NavLink className='text-white text-lg font-medium underline' to='/dashboard'>Dashboard</NavLink>
       </ul>
     </nav>
   </div>
