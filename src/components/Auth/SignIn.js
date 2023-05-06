@@ -7,7 +7,7 @@ const SignIn = () => {
     const [passwordError,setPasswordError] = useState('')
     const [password,setPassword] = useState('')
     const [confirmPassword,setConfirmPassword] = useState('')
-    var data = JSON.parse(localStorage.getItem('data'))
+    var data = JSON.parse(localStorage.getItem('data')) ? JSON.parse(localStorage.getItem('data')) : []
     const history = useNavigate()
     
     const signIn = (e) => {
