@@ -33,7 +33,7 @@ const Login = () => {
             <input type='password' className='w-full text-white py-1 px-2 rounded-md outline-none bg-slate-500' placeholder='Password' value={password} onChange={e=>setPassword(e.target.value)} required/>
             <input type='submit' className='cursor-pointer hover:bg-fuchsia-600 w-full py-1 px-2 rounded-md text-white bg-fuchsia-500 font-medium text-lg' value='Log in'/>
         </form>
-        <p className={`text-slate-500 text-start pt-3 ${error !== '' && 'pt-8'}`}>New Here? <NavLink to='/signin' className='text-fuchsia-500 hover:text-fuchsia-600 underline'>Sign In</NavLink></p>
+        <p className={`text-slate-500 text-start ${error !== '' ? 'pt-8' : 'pt-3'}`}>New Here? <NavLink to='/signin' className='text-fuchsia-500 hover:text-fuchsia-600 underline'>Sign In</NavLink></p>
     </div>
     
     </div>
