@@ -10,7 +10,6 @@ const Dashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [showForm, setShowForm] = useState(true);
   const [from,setFrom] = useState('12:00')
   const [to,setTo] = useState('13:00')
   const [date, setDate] = useState("2018-01-29");
@@ -196,6 +195,7 @@ const Dashboard = () => {
     if(error === ''){
       getFlights()
     } 
+    /*eslint-disable*/
   },[currentPage,date,to,from])
 
   useEffect(()=>{
