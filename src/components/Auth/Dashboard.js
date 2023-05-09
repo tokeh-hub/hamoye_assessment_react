@@ -139,7 +139,7 @@ const Dashboard = () => {
           },
         }
       );
-
+      if(response.data === []){setError('There is no data for the time specified')}
       response.data.forEach((element) => {
         arr.push(element.estDepartureAirport);
         arr.push(element.estArrivalAirport);
@@ -193,14 +193,16 @@ const Dashboard = () => {
   };
 
   useEffect(()=>{
+    if(error === ''){
       getFlights()
+    } 
   },[currentPage,date,to,from])
 
   useEffect(()=>{
     setError('')
     if(date1 !== '' && date2 !== ''){
       getTimeDiffInHours(date1,date2)}
-  },[from,to])
+  },[date1,date2])
 
   return (
     <div className="flex h-[900px] bg-gray-200">
