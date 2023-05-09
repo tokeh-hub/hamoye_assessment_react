@@ -15,6 +15,10 @@ const Dashboard = () => {
   const [to,setTo] = useState('13:00')
   const [date, setDate] = useState("2018-01-29");
   const [time, setTime] = useState("");
+  const [error, setError] = useState("");
+  const [date1,setDate1] = useState('')
+  const [date2,setDate2] = useState('')
+
   
 
   const [begin, setBegin] = useState("1517227200");
@@ -58,6 +62,7 @@ const Dashboard = () => {
     setFrom(e.target.value)
     var d = `${date}T${e.target.value}`;
     var someDate = new Date(d);
+    setDate1(someDate)
     someDate = someDate.getTime();
     setBegin(Math.floor(someDate / 1000));
   };
@@ -67,6 +72,7 @@ const Dashboard = () => {
     setTo(e.target.value)
     var d = `${date}T${e.target.value}`;
     var someDate = new Date(d);
+    setDate2(someDate)
     someDate = someDate.getTime();
     setEnd(Math.floor(someDate / 1000));
   };
@@ -102,6 +108,21 @@ const Dashboard = () => {
     var hours = someDate.getHours();
     var a  =  hours >= 12 ? 'PM' : 'AM';
     setTime(hours + ":" + minutes + ' ' + a)
+  }
+
+  const getTimeDiffInMilliseconds = (date1,date2) =>{
+    const timeDiff = date2.getTime() - date1.getTime();
+    return timeDiff;
+  }
+
+  const getTimeDiffInHours = (date1, date2) => {
+    const timeDiff = getTimeDiffInMilliseconds(date1, date2);
+    var difference =  timeDiff / (1000 * 60 * 60); // convert milliseconds to hours
+    if(difference > 2 || difference === 0){
+      setLoading(false)
+      setFlights([])
+      setError('The difference between begin and end time shouldnt be more than 2 hours or less than 1 hour')
+    }
   }
 
   // function to get all flights and the arriving and departing flights for each airport at a particular time
@@ -175,6 +196,12 @@ const Dashboard = () => {
       getFlights()
   },[currentPage,date,to,from])
 
+  useEffect(()=>{
+    setError('')
+    if(date1 !== '' && date2 !== ''){
+      getTimeDiffInHours(date1,date2)}
+  },[from,to])
+
   return (
     <div className="flex h-[900px] bg-gray-200">
       <div class="hidden w-64 bg-indigo-500 md:block">
@@ -239,7 +266,9 @@ const Dashboard = () => {
             </div>
           ) : (
             <div>
-              <ul className="flex flex-col gap-5 mx-auto mt-12 w-screen sm:w-full h-full rounded-md">
+             {error !== '' ? <p className="text-red-500 font-bold">{error}</p> :
+             <div>
+             <ul className="flex flex-col gap-5 mx-auto mt-12 w-screen sm:w-full h-full rounded-md">
               {flights.map((flight, index) => (
                 <li
                   className="bg-indigo-500 text-white py-2 font-medium text-lg rounded-md "
@@ -258,6 +287,9 @@ const Dashboard = () => {
               Next <AiOutlineArrowRight/>
             </button>
           </div>
+             </div>}
+
+           
             </div>
             
           )}
